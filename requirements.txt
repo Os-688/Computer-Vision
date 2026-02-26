@@ -1,1 +1,14 @@
+# Core visión
+opencv-python
+numpy
+Pillow
+
+# Reconocimiento facial
 deepface
+
+# Almacenamiento / utilidades
+pandas
+python-dotenv
+
+# Opcional (si haces panel web)
+flask
