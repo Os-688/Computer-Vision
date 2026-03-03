@@ -1,14 +1,17 @@
 # Core visión
-opencv-python
-numpy
-Pillow
+opencv-python>=4.8.1,<4.9
+numpy>=1.24.3,<2.0
+Pillow>=9.5,<10
 
-# Reconocimiento facial
-deepface
+# Reconocimiento facial (stack estable para DeepFace)
+deepface>=0.0.79,<0.0.80
+retina-face>=0.0.17,<0.0.18
+tensorflow>=2.15.0,<2.16
+tf-keras>=2.15,<2.16
 
 # Almacenamiento / utilidades
-pandas
-python-dotenv
+pandas>=2.0,<2.2
+python-dotenv>=1.0,<2.0
 
-# Opcional (si haces panel web)
-flask
+# Opcional (panel web)
+flask>=2.3,<3.0

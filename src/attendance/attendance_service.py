@@ -15,7 +15,7 @@ class AttendanceService:
     """
 
 
-    def __init__(self, csv_path: str = "data/attendance.csv", dedupe_seconds: int = 300):
+    def __init__(self, csv_path: str = "data/deepface/attendance/attendance.csv", dedupe_seconds: int = 300):
         self.csv_path = csv_path
         self.dedupe_seconds = dedupe_seconds
         self.last_seen: Dict[str, datetime] = {}

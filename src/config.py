@@ -28,12 +28,24 @@ def load_config() -> Config:
      - THRESHOLD: umbral de distancia para reconocimiento facial (valores más bajos son más estrictos)
      - DEDUPE_SECONDS: número de segundos para considerar un registro de asistencia como duplicado
     """
+    # Cargar variables de entorno con valores por defecto y convertir tipos según sea necesario
+    # 
+    # Usuario: para personalizar, puede crear un archivo .env con las variables deseadas o establecerlas en el entorno del sistema. Por ejemplo:
+    #   CAMERA_URL=http://
+    #   DB_PATH=data/deepface/face_db
+    #   CSV_PATH=data/deepface/attendance/attendance.csv
+    #   MODEL_NAME=Facenet512
+    #   DETECTOR_BACKEND=retinaface
+    #   THRESHOLD=0.4
+    #   DEDUPE_SECONDS=300
+
+
     return Config(
         CAMERA_URL=os.getenv("CAMERA_URL", "http://192.168.1.100:8080/video"),
-        DB_PATH=os.getenv("DB_PATH", os.path.join("data", "face_db")),
-        CSV_PATH=os.getenv("CSV_PATH", os.path.join("data", "attendance.csv")),
-        MODEL_NAME=os.getenv("MODEL_NAME", "VGG-Face"),
-        DETECTOR_BACKEND=os.getenv("DETECTOR_BACKEND", "mtcnn"),
+        DB_PATH=os.getenv("DB_PATH", os.path.join("data", "deepface", "face_db")),
+        CSV_PATH=os.getenv("CSV_PATH", os.path.join("data", "deepface", "attendance", "attendance.csv")),
+        MODEL_NAME=os.getenv("MODEL_NAME", "Facenet512"),
+        DETECTOR_BACKEND=os.getenv("DETECTOR_BACKEND", "retinaface"),
         THRESHOLD=float(os.getenv("THRESHOLD", "0.4")),
         DEDUPE_SECONDS=int(os.getenv("DEDUPE_SECONDS", "300")),
     )

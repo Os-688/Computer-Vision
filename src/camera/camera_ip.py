@@ -3,11 +3,7 @@ import time
 import typing as t
 import cv2
 
-# Try flexible imports so module works whether src is a package or not
-try:
-    from src.camera_manager import CamaraManager
-except Exception:
-    from camera_manager import CamaraManager
+from .camera_manager import CamaraManager
 
 
 class CameraIP:
@@ -20,8 +16,11 @@ class CameraIP:
 
     """
     def __init__(self, camera_url: str, reopen_backoff: float = 1.0):
-        self.camera_url = camera_url
-        self._mgr = CamaraManager(ip_url=camera_url)
+        clean_url = (camera_url or "").strip().strip('"').strip("'")
+        if not clean_url:
+            raise ValueError("camera_url está vacío. Revisa CAMERA_URL en el archivo .env")
+        self.camera_url = clean_url
+        self._mgr = CamaraManager(ip_url=clean_url)
         self.reopen_backoff = reopen_backoff
 
     def open(self) -> None:
